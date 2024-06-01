@@ -5,6 +5,10 @@ const bannerImage = document.querySelector('#banner-upload');
 const banner = document.querySelector(".banner");
 const publishBtn = document.querySelector('.publish-btn');
 const uploadInput = document.querySelector('#image-upload');
+const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
 
 // Gestionnaire d'événement pour le changement de l'image de bannière
 bannerImage.addEventListener('change', () => {
@@ -47,6 +51,8 @@ const addImage = (imagepath, alt) => {
     let textToInsert = `\r![${alt}](${imagepath})\r`;
     articleFeild.value = articleFeild.value.slice(0, curPos) + textToInsert + articleFeild.value.slice(curPos);
 }
+
+let bannerPath = '';
 
 // Gestionnaire d'événement pour le bouton de publication
 publishBtn.addEventListener('click', () => {

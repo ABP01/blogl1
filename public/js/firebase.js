@@ -19,10 +19,17 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 const storageRef = ref(storage);
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+
+let bannerPath = '';
 
 // Function to upload an image
 const uploadImage = (uploadFile, uploadType) => {
+    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const [file] = uploadFile.files;
     if (file && file.type.includes("image")) {
         const fileRef = ref(storageRef, `images/${file.name}`);
@@ -66,9 +73,13 @@ publishBtn.addEventListener('click', () => {
             id += letters[Math.floor(Math.random() * letters.length)];
         }
 
+        let bannerPath = '';
+
+
         // Document name
         let docName = `${blogTitle}-${id}`;
         let date = new Date(); // For published at information
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
         // Access Firestore with the db variable
         db.collection("blogs").doc(docName).set({
