@@ -25,11 +25,11 @@ const months = [
 ];
 
 
+
 let bannerPath = '';
 
 // Function to upload an image
 const uploadImage = (uploadFile, uploadType) => {
-    let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const [file] = uploadFile.files;
     if (file && file.type.includes("image")) {
         const fileRef = ref(storageRef, `images/${file.name}`);
@@ -40,7 +40,7 @@ const uploadImage = (uploadFile, uploadType) => {
                 if (uploadType === "image") {
                     addImage(downloadURL, file.name);
                 } else {
-                    bannerPath = downloadURL;
+                    bannerPath = downloadURL; // Update bannerPath here
                     banner.style.backgroundImage = `url("${bannerPath}")`;
                 }
             });

@@ -1,3 +1,8 @@
+// Import the necessary Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js";
+
 // Références aux éléments HTML
 const blogTitleField = document.querySelector('.title');
 const articleFeild = document.querySelector('.article');

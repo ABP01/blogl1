@@ -1,3 +1,14 @@
+// Import the necessary Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js";
+
+
+// const app = initializeApp(firebaseConfig);
+// const db = getFirestore(app);
+// const storage = getStorage(app);
+// const storageRef = ref(storage);
+
 let blogId = decodeURI(location.pathname.split("/").pop());
 
 let docRef = db.collection("blogs").doc(blogId);
@@ -9,6 +20,19 @@ docRef.get().then((doc) => {
         location.replace("/");
     }
 })
+
+
+// Declare firebaseConfig as an object with the necessary properties
+let firebaseConfig = {
+    apiKey: "AIzaSyBF9hR1HnrnH-b9BIBI4r3MlhkcrXV_8hQ",
+    authDomain: "iail1-blogging.firebaseapp.com",
+    projectId: "iail1-blogging",
+    storageBucket: "iail1-blogging.appspot.com",
+    messagingSenderId: "21550890090",
+    appId: "1:21550890090:web:069ba4b8296a070fc99e13",
+    measurementId: "G-SBLL4VN4X3"
+};
+
 
 const setupBlog = (data) => {
     const banner = document.querySelector('.banner');
@@ -63,3 +87,14 @@ const addArticle = (ele, data) => {
         }
     })
 }
+
+// Function to get all blog posts
+const getDocs = async () => {
+    const querySnapshot = await getDocs(collection(db, "blogs"));
+    querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+    });
+};
+
+// Call the getDocs function
+getDocs();
